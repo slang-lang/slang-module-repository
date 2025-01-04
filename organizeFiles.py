@@ -3,6 +3,7 @@
 import os
 import json
 import shutil
+import sys
 
 def organize_files(source_folder, target_folder):
     """
@@ -50,9 +51,19 @@ def organize_files(source_folder, target_folder):
 
     print("File organization complete.")
 
-# Example usage
+
 if __name__ == "__main__":
-    source_folder = "upload"  # Replace with your source folder
-    target_folder = "modules"      # Replace with your target folder
-    organize_files(source_folder, target_folder)
+    basePath = ""
+
+    if len( sys.argv ) == 2:
+        basePath = sys.argv[1] + "/"
+
+    if len(sys.argv) > 2:
+        print( f"Invalid number of arguments provided! Expected 1 received {len(sys.argv) - 1}" )
+        exit( -1 )
+
+    sourceFolder = basePath + "upload"
+    targetFolder = basePath + "modules"
+
+    organize_files(sourceFolder, targetFolder)
 

@@ -2,6 +2,7 @@
 
 import os
 import json
+import sys
 
 def generate_index( repository_path ):
     index = { "modules": [] }
@@ -40,10 +41,21 @@ def generate_index( repository_path ):
                         } )
     return index
 
-# Generate and save the index.json
-repository_path = "modules"
-index = generate_index( repository_path )
+if __name__ == "__main__":
+    basePath = ""
 
-with open( os.path.join( repository_path, "index.json" ), "w" ) as f:
-    json.dump( index, f, indent=2 )
+    if len( sys.argv ) == 2:
+        basePath = sys.argv[1] + "/"
+
+    if len(sys.argv) > 2:
+        print( f"Invalid number of arguments provided! Expected 1 received {len(sys.argv) - 1}" )
+        exit( -1 )
+
+    repositoryPath = basePath + "modules"
+
+    # Generate and save the index.json
+    index = generate_index( repositoryPath )
+
+    with open( os.path.join( repositoryPath, "index.json" ), "w" ) as f:
+        json.dump( index, f, indent=2 )
 
