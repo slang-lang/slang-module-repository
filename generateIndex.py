@@ -2,6 +2,7 @@
 
 import os
 import json
+import shutil
 import sys
 
 def generate_index( repository_path ):
@@ -47,7 +48,7 @@ if __name__ == "__main__":
     if len( sys.argv ) == 2:
         basePath = sys.argv[1] + "/"
 
-    if len(sys.argv) > 2:
+    if len( sys.argv ) > 2:
         print( f"Invalid number of arguments provided! Expected 1 received {len(sys.argv) - 1}" )
         exit( -1 )
 
@@ -58,4 +59,6 @@ if __name__ == "__main__":
 
     with open( os.path.join( repositoryPath, "index.json" ), "w" ) as f:
         json.dump( index, f, indent=2 )
+
+    shutil.copyfile( repositoryPath + "/index.json", repositoryPath + "/index.html" )
 
