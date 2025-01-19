@@ -10,9 +10,9 @@ def get_latest_compatible_version( module_name, version_min, version_max=None, r
         index = json.load( f )
 
     # Find all versions of the module
-    versions = [ 
+    versions = [
         mod for mod in index[ "modules" ] if mod[ "name_short" ] == module_name
-     ]
+    ]
 
     # Sort by version ( descending )
     versions.sort( key=lambda x: Version( x[ "version" ] ), reverse=True )
