@@ -63,3 +63,5 @@ if __name__ == "__main__":
 
     shutil.copyfile( repositoryPath + "/index.json", repositoryPath + "/index.html" )
 
+    print( "Index generation complete." )
+
