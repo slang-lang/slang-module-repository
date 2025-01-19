@@ -24,7 +24,7 @@ def generate_index( repository_path ):
                 version_path = os.path.join( module_path, version )
 
                 if os.path.isdir( version_path ):
-                    module_path = os.path.join(version_path, "module.json")
+                    module_path = os.path.join( version_path, "module.json" )
 
                     if os.path.exists( module_path ):
                         with open( module_path ) as f:
@@ -34,10 +34,11 @@ def generate_index( repository_path ):
                                 print( f"Error: {module_path}" )
                                 continue
 
-                        index["modules"].append( {
-                            "name": module["name_short"],
-                            "name_full": module["name"],
-                            "version": module["version"],
+                        index[ "modules" ].append( {
+                            "name": module[ "name_short" ],
+                            "version": module[ "version" ],
+                            "checksum": "", #module[ "checksum" ],
+                            "name_full": module[ "name" ],
                             "path": f"/{module_name}/{version}/module.json"
                         } )
     return index
