@@ -17,7 +17,7 @@ if ( !in_array( $receivedContentType, $allowedTypes ) ) {
 	exit;
 }
 
-if ( ( $_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'PUT' ) && isset($_FILES['file']) ) {
+if ( ( $_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'PUT' ) && isset( $_FILES['file'] ) ) {
     //$uploadDir = "";
     //$uploadFile = $uploadDir . basename($_FILES['file']['name']);
 
@@ -26,7 +26,9 @@ if ( ( $_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'PU
     //    mkdir($uploadDir, 0777, true);
     //}
 
-    $uploadFile = basename($_FILES['file']['name']);
+    //print_r( $_FILES );
+
+    $uploadFile = basename( $_FILES['file']['name'] );
 
     if ( move_uploaded_file( $_FILES['file']['tmp_name'], $uploadFile ) ) {
         //echo "File is valid, and was successfully uploaded.\n";
