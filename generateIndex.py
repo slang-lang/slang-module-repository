@@ -72,6 +72,7 @@ def generate_index( repository_path ):
                             "version": module[ "version" ],
                             "checksum": module[ "checksum" ],
                             "name_full": module[ "name" ],
+                            "description": module[ "description" ],
                             "path": f"/{module_name}/{version}/module.json"
                         } )
     return index
