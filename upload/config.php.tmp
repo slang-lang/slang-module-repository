@@ -1,0 +1,7 @@
+<?php
+
+$valid_username = 'user';
+$valid_password = 'password';
+$valid_token    = 'token';
+
+?>
